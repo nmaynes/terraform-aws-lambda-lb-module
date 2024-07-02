@@ -8,6 +8,8 @@ data "aws_vpc" "vpc" {
   count = var.vpc_id == null ? 1 : 0
 
   tags = local.vpc_data_lookup_tags
+
+  filter = local.vpc_running_instance_filter
 }
 
 data "aws_acm_certificate" "primary_acm_wildcard_cert" {
