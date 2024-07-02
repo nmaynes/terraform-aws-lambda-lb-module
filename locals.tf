@@ -12,6 +12,11 @@ locals {
     "environment" : var.environment
   }
 
+  vpc_running_instance_filter = {
+    name   = "instance-state-name"
+    values = ["running"]
+  }
+
   subnet_data_lookup_filters = var.subnet_data_lookup_filters != null ? var.subnet_data_lookup_filters : {
     "vpc-id" = [local.vpc_id]
     "tag:Name" = [
