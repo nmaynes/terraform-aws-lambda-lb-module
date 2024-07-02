@@ -9,7 +9,7 @@ data "aws_vpc" "vpc" {
 
   tags = local.vpc_data_lookup_tags
 
-  filter = {
+  filter {
     name   = "instance-state-name"
     values = ["running"]
   }
