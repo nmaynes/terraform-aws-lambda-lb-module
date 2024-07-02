@@ -9,7 +9,10 @@ data "aws_vpc" "vpc" {
 
   tags = local.vpc_data_lookup_tags
 
-  filter = local.vpc_running_instance_filter
+  filter = {
+    name   = "instance-state-name"
+    values = ["running"]
+  }
 }
 
 data "aws_acm_certificate" "primary_acm_wildcard_cert" {
